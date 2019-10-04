@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<h1>Страница для тестирования загрузки</h1>
+
+<hr/>
+
+<h4>Загрузка Multiple Files:</h4>
+<form method="POST" enctype="multipart/form-data" th:action="@{/upload-multiple-files}">
+    <p>Путь к файлу<br>
+    </p>
+    <input type="file" name="files" multiple>
+    </p>
+    <p><input type="submit" value="Отправить">
+        <input type="reset" value="Очистить"></p>
+</form>
+<i>============================================================================================</i>
+<hr/>
+
+<h4>Загрузка URL:</h4>
+<form method="POST" th:action="@{/upload-multiple-files}">
+    <p><b>URL:</b><br>
+    </p>
+    <li><input type="url" name="urls" size="50" value="https://s1.1zoom.ru/big0/344/292505-Sepik.jpg"></li>
+    <li><input type="url" name="urls" size="50" value="https://www.eldorado.ru/instructions/71345349.pdf"></li>
+    <li><input type="url" name="urls" size="50"></li>
+    <li><input type="url" name="urls" size="50"></li>
+    </p>
+    <p><input type="submit" value="Отправить">
+        <input type="reset" value="Очистить"></p>
+</form>
+<i>============================================================================================</i>
+<hr/>
+
+<h2>Загруженные файлы:</h2>
+<ul>
+    <li th:each="file : ${files}">
+        <a th:href="${file}" target="_blank" th:text="${file}"></a>
+    </li>
+</ul>
+
+<hr/>
+
+<!--<h2>Удалить Загруженные файлы</h2>-->
+<!--<form method="get" th:action="@{/deleteAll}">-->
+<!--<p><input type="submit" value="DEL">-->
+<!--</form>-->
+
+</body>
+</html>
